@@ -59,7 +59,7 @@ def login():
     data = schema.load(
         request.get_json()
     )
-
+    logger.info(f"Rate limiting added for:",{data})
     result = AuthService.login(
         data
     )
