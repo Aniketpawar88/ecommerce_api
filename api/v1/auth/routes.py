@@ -5,6 +5,7 @@ from services.auth_service import AuthService
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
 from core.extensions import limiter
+from core.logger import logger
 
 auth_bp = Blueprint(
     "auth",
@@ -15,6 +16,8 @@ auth_bp = Blueprint(
 
 @auth_bp.route("/health")
 def health():
+    logger.info("Health API called")
+
     return {
         "success": True,
         "message": "Auth Module Working"
@@ -31,6 +34,7 @@ def register():
     data = schema.load(
         request.get_json()
     )
+    logger.info(f"Register API json:",{data})
 
     user = AuthService.register(
         data
