@@ -34,7 +34,7 @@ def register():
     data = schema.load(
         request.get_json()
     )
-    logger.info(f"Register API json:",{data})
+    logger.info(f"Register API json {data}")
 
     user = AuthService.register(
         data
@@ -59,7 +59,7 @@ def login():
     data = schema.load(
         request.get_json()
     )
-    logger.info(f"Rate limiting added for:",{data})
+    logger.info(f"Rate limiting added for:{data}")
     result = AuthService.login(
         data
     )
