@@ -20,8 +20,9 @@ def create_app():
      # Register Blueprints
     from api.v1.auth.routes import auth_bp
     from core.error_handlers import register_error_handlers
-
+    from api.v1.files.upload.routes import files_bp
     app.register_blueprint(auth_bp)
+    app.register_blueprint(files_bp)
     register_error_handlers(app)
     from models import User, Role
     
